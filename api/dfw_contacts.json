@@ -1,0 +1,27 @@
+{
+  "Dallas": {
+    "city": "Dallas",
+    "emails": ["dallas311@dallascityhall.com"],
+    "notes": "Dallas 311 service requests"
+  },
+  "Fort Worth": {
+    "city": "Fort Worth",
+    "emails": ["fortworth311@fortworthtexas.gov"],
+    "notes": "Fort Worth city services"
+  },
+  "Arlington": {
+    "city": "Arlington",
+    "emails": ["actioncenter@arlingtontx.gov"],
+    "notes": "Arlington Action Center"
+  },
+  "Irving": {
+    "city": "Irving",
+    "emails": ["irving311@cityofirving.org"],
+    "notes": "Irving 311"
+  },
+  "Default": {
+    "city": "DFW Region",
+    "emails": ["fixiepixie@demo.local"],
+    "notes": "Fallback contact"
+  }
+}

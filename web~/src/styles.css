@@ -148,3 +148,20 @@ body {
 .mt16{ margin-top:16px; }
 .hidden{ display:none; }
 .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
+
+.btn {
+  cursor: pointer;
+  transition: 0.2s all ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.logout {
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+}

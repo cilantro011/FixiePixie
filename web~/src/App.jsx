@@ -127,10 +127,26 @@ export default function App() {
 
   return (
     <div className="container">
-      <header className="header">
+      <header className="header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1 className="title">FixiePixie</h1>
-        <span className="badge">DFW</span>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span className="badge">DFW</span>
+          <button
+            className="btn"
+            onClick={() => {
+              localStorage.removeItem("isLoggedIn");
+              localStorage.removeItem("token");
+              localStorage.removeItem("currentUser");
+              window.location.href = "/";
+            }}
+            style={{ background: "var(--panel-2)", color: "var(--text)", fontSize: "0.9rem", padding: "8px 12px" }}
+          >
+            Logout
+          </button>
+        </div>
       </header>
+
 
       <button className="btn" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
         {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
