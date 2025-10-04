@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTheme } from "./main";
+
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 const LABELS = ['Pothole', 'Streetlight out', 'Graffiti', 'Trash overflow']
@@ -12,6 +14,10 @@ export default function App() {
   const [category, setCategory] = useState('')
   const [note, setNote] = useState('')
   const [sending, setSending] = useState(false)
+
+  const { theme, setTheme } = useTheme();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+
 
   const videoRef  = useRef(null)
   const canvasRef = useRef(null)
@@ -68,6 +74,21 @@ export default function App() {
     }, 'image/jpeg', 0.9)
   }
 
+  function retakePhoto() {
+  setPreview('')
+  setPhoto(null)
+
+  // Restart the camera feed if stopped
+  if (navigator.mediaDevices?.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+      .then((stream) => {
+        if (videoRef.current) videoRef.current.srcObject = stream
+      })
+      .catch((err) => console.error('Camera restart failed:', err))
+  }
+}
+
+
   function onFile(e) {
     const f = e.target.files?.[0]
     if (!f) return
@@ -86,6 +107,10 @@ export default function App() {
       fd.append('lon', coords.lon)
       fd.append('category', category)
       if (note) fd.append('note', note)
+
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}')
+      fd.append('reporterName', currentUser.name || 'Anonymous')
+      fd.append('reporterEmail', currentUser.email || '')
       const r = await fetch(`${API}/api/report`, { method:'POST', body: fd })
       const j = await r.json()
       setStatus(j.message || 'Submitted!')
@@ -107,24 +132,36 @@ export default function App() {
         <span className="badge">DFW</span>
       </header>
 
+      <button className="btn" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
+      </button>
+
+
       <p className={statusClass}>{status}</p>
 
       <section className="panel grid grid-2">
         {/* Media column */}
         <div>
           <div className="media">
-            <video ref={videoRef} autoPlay playsInline />
-          </div>
-          <div className="controls">
-            <button className="btn btn-primary" onClick={takePhoto}>Take Photo</button>
-            <label className="btn">
-              Upload
-              <input className="hidden" type="file" accept="image/*" capture="environment" onChange={onFile}/>
-            </label>
-          </div>
-          {preview && (
-            <img className="media mt12" src={preview} alt="preview"/>
-          )}
+              {!preview && <video ref={videoRef} autoPlay playsInline />}
+              {preview && <img src={preview} alt="Captured" />}
+            </div>
+
+            <div className="controls">
+              {!preview && (
+                <>
+                  <button className="btn btn-primary" onClick={takePhoto}>Take Photo</button>
+                  <label className="btn">
+                    Upload
+                    <input className="hidden" type="file" accept="image/*" capture="environment" onChange={onFile}/>
+                  </label>
+                </>
+              )}
+              {preview && (
+                <button className="btn" onClick={retakePhoto}>Retake Photo</button>
+              )}
+            </div>
+
         </div>
 
         {/* Details column */}
