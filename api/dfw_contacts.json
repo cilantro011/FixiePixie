@@ -19,6 +19,11 @@
     "emails": ["irving311@cityofirving.org"],
     "notes": "Irving 311"
   },
+   "Richland Hills": {
+    "city": "Richland Hills",
+    "emails": ["communications@richlandhills.com"],
+    "notes": "Richland city hall"
+  },
   "Default": {
     "city": "DFW Region",
     "emails": ["fixiepixie@demo.local"],
