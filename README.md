@@ -12,6 +12,21 @@ Features
 - 📨 Send the report by email with a Google Maps link (Gmail client + SMTP fallback)
 - 🔐 Optional Google sign-in (JWT issued by the API)
 
+## Demo
+
+<p align="center">
+  <img src="docs/demo/login.png" alt="Login with Google" width="700">
+</p>
+
+<p align="center">
+  <img src="docs/demo/report.png" alt="Report screen" width="700">
+</p>
+
+<p align="center">
+  <img src="docs/demo/email.png" alt="Email received" width="700">
+</p>
+
+
 Quick start
 
 Requirements
