@@ -1,32 +1,53 @@
 {
-  "Dallas": {
-    "city": "Dallas",
-    "emails": ["dallas311@dallascityhall.com"],
-    "notes": "Dallas 311 service requests"
-  },
-  "Fort Worth": {
-    "city": "Fort Worth",
-    "emails": ["fortworth311@fortworthtexas.gov"],
-    "notes": "Fort Worth city services"
-  },
-  "Arlington": {
-    "city": "Arlington",
-    "emails": ["actioncenter@arlingtontx.gov"],
-    "notes": "Arlington Action Center"
-  },
-  "Irving": {
-    "city": "Irving",
-    "emails": ["irving311@cityofirving.org"],
-    "notes": "Irving 311"
-  },
-   "Richland Hills": {
-    "city": "Richland Hills",
-    "emails": ["communications@richlandhills.com"],
-    "notes": "Richland city hall"
-  },
-  "Default": {
-    "city": "DFW Region",
-    "emails": ["fixiepixie@demo.local"],
-    "notes": "Fallback contact"
-  }
+  "Dallas": { "emails": ["reports+dallas@fixiepixie.test"] },
+  "Fort Worth": { "emails": ["reports+fort_worth@fixiepixie.test"] },
+  "Arlington": { "emails": ["reports+arlington@fixiepixie.test"] },
+  "Plano": { "emails": ["reports+plano@fixiepixie.test"] },
+  "Irving": { "emails": ["reports+irving@fixiepixie.test"] },
+  "Garland": { "emails": ["reports+garland@fixiepixie.test"] },
+  "Grand Prairie": { "emails": ["reports+grand_prairie@fixiepixie.test"] },
+  "McKinney": { "emails": ["reports+mckinney@fixiepixie.test"] },
+  "Frisco": { "emails": ["reports+frisco@fixiepixie.test"] },
+  "Mesquite": { "emails": ["reports+mesquite@fixiepixie.test"] },
+  "Carrollton": { "emails": ["reports+carrollton@fixiepixie.test"] },
+  "Denton": { "emails": ["reports+denton@fixiepixie.test"] },
+  "Richardson": { "emails": ["reports+richardson@fixiepixie.test"] },
+  "Lewisville": { "emails": ["reports+lewisville@fixiepixie.test"] },
+  "Allen": { "emails": ["reports+allen@fixiepixie.test"] },
+  "Flower Mound": { "emails": ["reports+flower_mound@fixiepixie.test"] },
+  "Mansfield": { "emails": ["reports+mansfield@fixiepixie.test"] },
+  "North Richland Hills": { "emails": ["reports+north_richland_hills@fixiepixie.test"] },
+  "Cedar Hill": { "emails": ["reports+cedar_hill@fixiepixie.test"] },
+  "Rowlett": { "emails": ["reports+rowlett@fixiepixie.test"] },
+  "Grapevine": { "emails": ["reports+grapevine@fixiepixie.test"] },
+  "Euless": { "emails": ["reports+euless@fixiepixie.test"] },
+  "DeSoto": { "emails": ["reports+desoto@fixiepixie.test"] },
+  "Wylie": { "emails": ["reports+wylie@fixiepixie.test"] },
+  "Keller": { "emails": ["reports+keller@fixiepixie.test"] },
+  "Coppell": { "emails": ["reports+coppell@fixiepixie.test"] },
+  "Bedford": { "emails": ["reports+bedford@fixiepixie.test"] },
+  "Hurst": { "emails": ["reports+hurst@fixiepixie.test"] },
+  "Little Elm": { "emails": ["reports+little_elm@fixiepixie.test"] },
+  "The Colony": { "emails": ["reports+the_colony@fixiepixie.test"] },
+  "Farmers Branch": { "emails": ["reports+farmers_branch@fixiepixie.test"] },
+  "Haltom City": { "emails": ["reports+haltom_city@fixiepixie.test"] },
+  "Duncanville": { "emails": ["reports+duncanville@fixiepixie.test"] },
+  "Rockwall": { "emails": ["reports+rockwall@fixiepixie.test"] },
+  "Sachse": { "emails": ["reports+sachse@fixiepixie.test"] },
+  "Murphy": { "emails": ["reports+murphy@fixiepixie.test"] },
+  "Prosper": { "emails": ["reports+prosper@fixiepixie.test"] },
+  "Colleyville": { "emails": ["reports+colleyville@fixiepixie.test"] },
+  "Southlake": { "emails": ["reports+southlake@fixiepixie.test"] },
+  "Highland Village": { "emails": ["reports+highland_village@fixiepixie.test"] },
+  "Lake Dallas": { "emails": ["reports+lake_dallas@fixiepixie.test"] },
+  "Trophy Club": { "emails": ["reports+trophy_club@fixiepixie.test"] },
+  "Roanoke": { "emails": ["reports+roanoke@fixiepixie.test"] },
+  "Saginaw": { "emails": ["reports+saginaw@fixiepixie.test"] },
+  "White Settlement": { "emails": ["reports+white_settlement@fixiepixie.test"] },
+  "Balch Springs": { "emails": ["reports+balch_springs@fixiepixie.test"] },
+  "Lancaster": { "emails": ["reports+lancaster@fixiepixie.test"] },
+  "Burleson": { "emails": ["reports+burleson@fixiepixie.test"] },
+  "Midlothian": { "emails": ["reports+midlothian@fixiepixie.test"] },
+  "Richland Hills": { "emails": ["sajaanlaama@gmail.com"] },
+  "Default": { "emails": ["sajaanlaama@gmail.com"] }
 }

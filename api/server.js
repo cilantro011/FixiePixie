@@ -10,6 +10,11 @@ const { sendReportEmail } = require('./mailer');
 const { createUser, findUserByEmail, issueToken } = require('./auth');
 
 const app = express();
+
+const { OAuth2Client } = require('google-auth-library');
+const crypto = require('crypto');
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
 app.use(cors());
 
 // Allow big JSON bodies (front-end never sends huge JSON, but safe defaults)
@@ -60,6 +65,9 @@ app.get('/reverse', async (req, res) => {
     res.status(500).json({ error: 'reverse geocode failed' });
   }
 });
+
+//console.log('Geo match:', geo.city, geo.state, geo.zip);
+
 
 // --- report submit (REAL EMAIL) ---
 app.post('/api/report', upload.single('photo'), async (req, res) => {
@@ -184,6 +192,41 @@ app.post('/auth/login', (req, res) => {
   const token = issueToken(user);
   res.json({ token, user });
 });
+
+// POST /auth/google  { idToken }
+app.post('/auth/google', async (req, res) => {
+  const { idToken } = req.body || {};
+  if (!idToken) return res.status(400).json({ error: 'idToken required' });
+
+  try {
+    const ticket = await googleClient.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_CLIENT_ID
+    });
+    const payload = ticket.getPayload(); // { email, name, picture, sub, ... }
+    const email = payload.email;
+    const name = payload.name || email;
+    const picture = payload.picture;
+
+    let row = findUserByEmail(email);
+    let user;
+
+    if (!row) {
+      // create a local account w/ random password (we won't use it)
+      const tmp = crypto.randomBytes(16).toString('hex');
+      user = createUser({ name, email, password: tmp });
+    } else {
+      user = { id: row.id, name: row.name, email: row.email };
+    }
+
+    const token = issueToken(user);
+    res.json({ token, user: { ...user, picture } });
+  } catch (e) {
+    console.error('google auth error:', e);
+    res.status(401).json({ error: 'invalid google token' });
+  }
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
